@@ -1,0 +1,32 @@
+#set up properties
+server:
+    port: ${SERVER_PORT:8800}
+
+
+management:
+    security:
+        enabled: false
+    endpoint:
+        restart:
+            enabled: true
+
+spring:
+    data:
+        rest: 
+            base-path: /api
+    application:
+        name: fargate
+    datasource:
+        url: jdbc:mysql://${RDS_HOSTNAME:127.0.0.1}:${RDS_PORT:3306}/${RDS_DB_NAME:dbfargate}?createDatabaseIfNotExist=true&autoReconnect=true
+        password: ${RDS_PASSWORD:tpm1234}
+        username: ${RDS_USERNAME:root}
+        schema: classpath:/schema.sql
+        initialization-mode: always
+    jpa:
+        hibernate:
+            ddl-auto: none
+        show-sql: true
+        generate-ddl: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
