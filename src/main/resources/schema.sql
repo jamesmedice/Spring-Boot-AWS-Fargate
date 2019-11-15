@@ -1,6 +1,6 @@
-create database IF NOT EXISTS expenses;
+create database IF NOT EXISTS dbfargate;
 
-USE expenses;
+USE dbfargate;
 
 		
 CREATE TABLE IF NOT EXISTS cooperative (
